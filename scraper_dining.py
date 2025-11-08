@@ -1,4 +1,4 @@
-import psycopg2
+import psycopg2 
 from flask import Flask, jsonify, request
 import datetime
 import requests
@@ -10,7 +10,7 @@ def get_db_connection():
     conn = psycopg2.connect(
         dbname="dormdasher",
         user="postgres",        # replace with your username
-        password="yourpassword",  # replace with your password
+        password="F@rd33nmegastar",  # replace with your password
         host="localhost",
         port="5432"
     )
@@ -40,7 +40,7 @@ def scrape_and_upload():
                     INSERT INTO dining_halls (name)
                     VALUES (%s)
                     ON CONFLICT (name) DO NOTHING;
-                    """,(hall))
+                    """,(hall,))
         
         cur.execute("SELECT id FROM dining_halls WHERE name = %s;", (hall,))
         hall_row = cur.fetchone()

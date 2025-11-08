@@ -8,7 +8,7 @@ import json
 # --- Database Connection ---
 def get_db_connection():
     conn = psycopg2.connect(
-        dbname="umass_dining",
+        dbname="dormdasher",
         user="postgres",        # replace with your username
         password="yourpassword",  # replace with your password
         host="localhost",

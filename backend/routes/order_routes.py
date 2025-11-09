@@ -35,7 +35,7 @@ def create_order():
             INSERT INTO orders (
                 order_number, customer_name, customer_email, customer_phone,
                 delivery_address, special_instructions, pickup_location,
-                total_amount, tracking_status
+                total_amount, status
             )
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id, order_number, created_at

@@ -16,6 +16,7 @@ from routes.menu_routes import menu_bp
 from routes.order_routes import order_bp
 from routes.dasher_routes import dasher_bp
 from routes.admin_routes import admin_bp
+from routes.ai_routes import ai_bp
 
 load_dotenv()
 
@@ -77,6 +78,7 @@ app.register_blueprint(menu_bp, url_prefix='/api')
 app.register_blueprint(order_bp, url_prefix='/api')
 app.register_blueprint(dasher_bp, url_prefix='/api/dasher')
 app.register_blueprint(admin_bp, url_prefix='/api/admin')
+app.register_blueprint(ai_bp, url_prefix='/api/ai')
 
 # Health check
 @app.route('/api/health', methods=['GET'])

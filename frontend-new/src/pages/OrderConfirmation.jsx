@@ -7,6 +7,7 @@ const OrderConfirmation = () => {
   const navigate = useNavigate();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(null);
   const [estimatedArrival, setEstimatedArrival] = useState(null);
 
@@ -53,14 +54,22 @@ const OrderConfirmation = () => {
 
   const fetchOrderDetails = async () => {
     try {
+      console.log('Fetching order details for:', orderNumber);
       const response = await fetch(`/api/orders/${orderNumber}`);
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Order data received:', data);
       
       if (response.ok) {
         setOrder(data);
+        setError(null);
+      } else {
+        setError(data.error || 'Failed to load order details');
+        console.error('Order fetch failed:', data);
       }
     } catch (error) {
       console.error('Error fetching order:', error);
+      setError('Network error. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -108,6 +117,22 @@ const OrderConfirmation = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 mb-4">{error}</p>
+          <button
+            onClick={() => navigate('/')}
+            className="bg-dormdash-red text-white px-6 py-2 rounded-lg hover:bg-red-900"
+          >
+            Return to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (!order) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -124,7 +149,7 @@ const OrderConfirmation = () => {
     );
   }
 
-  const statusInfo = getStatusInfo(order.tracking_status);
+  const statusInfo = getStatusInfo(order.status);
   const StatusIcon = statusInfo.icon;
 
   return (
@@ -153,7 +178,7 @@ const OrderConfirmation = () => {
         </div>
 
         {/* Estimated Arrival Time */}
-        {timeRemaining && order.tracking_status !== 'delivered' && (
+        {timeRemaining && order.status !== 'delivered' && (
           <div className="bg-gradient-to-r from-dormdash-red to-red-700 rounded-lg shadow-md p-6 mb-6 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -187,10 +212,10 @@ const OrderConfirmation = () => {
             <div>
               <p className={`font-semibold ${statusInfo.color}`}>{statusInfo.text}</p>
               <p className="text-sm text-gray-600">
-                {order.tracking_status === 'pending' && 'Waiting for a dasher to accept your order'}
-                {order.tracking_status === 'confirmed' && `Dasher: ${order.dasher_name || 'Assigned'}`}
-                {order.tracking_status === 'picked_up' && 'Your order is on the way'}
-                {order.tracking_status === 'delivered' && 'Your order has been delivered'}
+                {order.status === 'pending' && 'Waiting for a dasher to accept your order'}
+                {order.status === 'confirmed' && `Dasher: ${order.dasher_name || 'Assigned'}`}
+                {order.status === 'picked_up' && 'Your order is on the way'}
+                {order.status === 'delivered' && 'Your order has been delivered'}
               </p>
             </div>
           </div>
@@ -203,19 +228,19 @@ const OrderConfirmation = () => {
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-gray-600">Pickup Location:</span>
-              <span className="font-medium">{order.pickup_location}</span>
+              <span className="font-medium">{order.pickup_location || 'N/A'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Delivery Address:</span>
-              <span className="font-medium">{order.delivery_address}</span>
+              <span className="font-medium">{order.delivery_address || 'N/A'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Phone:</span>
-              <span className="font-medium">{order.customer_phone}</span>
+              <span className="font-medium">{order.customer_phone || 'N/A'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Email:</span>
-              <span className="font-medium">{order.customer_email}</span>
+              <span className="font-medium">{order.customer_email || 'N/A'}</span>
             </div>
             {order.special_instructions && (
               <div className="pt-3 border-t">
@@ -230,7 +255,7 @@ const OrderConfirmation = () => {
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <h3 className="text-lg font-semibold mb-4">Items</h3>
           <div className="space-y-3">
-            {order.items && order.items.map((item, index) => (
+            {order.items && order.items.length > 0 ? order.items.map((item, index) => (
               <div key={index} className="flex justify-between items-center py-2 border-b last:border-b-0">
                 <div>
                   <p className="font-medium">{item.name}</p>
@@ -243,7 +268,9 @@ const OrderConfirmation = () => {
                   <p className="text-sm text-gray-600">${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
-            ))}
+            )) : (
+              <p className="text-gray-600 text-center py-4">No items found</p>
+            )}
           </div>
           
           <div className="mt-4 pt-4 border-t flex justify-between items-center">

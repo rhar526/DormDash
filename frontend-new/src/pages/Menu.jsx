@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ShoppingCart, Utensils, ChevronDown } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import AIChatbot from '../components/AIChatbot';
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const Menu = () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
+  const [aiFilteredItems, setAiFilteredItems] = useState(null);
 
   const dietaryTags = [
     'Vegetarian', 'Plant Based', 'Halal', 'Whole Grain',
@@ -59,7 +61,8 @@ const Menu = () => {
     );
   };
 
-  const filteredItems = menuItems.filter(item => {
+  // If AI has filtered items, use those; otherwise use tag filters
+  const filteredItems = (aiFilteredItems || menuItems).filter(item => {
     if (selectedTags.length === 0) return true;
     
     const itemTags = item.tags || [];
@@ -71,6 +74,10 @@ const Menu = () => {
       item.category?.toLowerCase().includes(tag.toLowerCase())
     );
   });
+
+  const handleAIFilter = (filteredResults) => {
+    setAiFilteredItems(filteredResults);
+  };
 
   const handleAddToCart = (item) => {
     addToCart(item);
@@ -224,6 +231,9 @@ const Menu = () => {
           </div>
         )}
       </div>
+
+      {/* AI Chatbot */}
+      <AIChatbot menuItems={menuItems} onFilterResults={handleAIFilter} />
     </div>
   );
 };

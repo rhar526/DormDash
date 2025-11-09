@@ -22,7 +22,7 @@ def get_dasher_orders():
 
         cur.execute('''
             SELECT order_number, customer_name, customer_phone, delivery_address,
-                   pickup_location, total_amount, tracking_status as status, created_at, accepted_at,
+                   pickup_location, total_amount, status, created_at, accepted_at,
                    dasher_name, dasher_phone
             FROM orders
             WHERE dasher_email = %s
@@ -67,13 +67,13 @@ def accept_order():
             return jsonify({'error': 'Dasher not found'}), 404
 
         # Verify order exists and is pending
-        cur.execute('SELECT id, customer_name, customer_email, pickup_location, delivery_address, tracking_status FROM orders WHERE order_number = %s', (order_number,))
+        cur.execute('SELECT id, customer_name, customer_email, pickup_location, delivery_address, status FROM orders WHERE order_number = %s', (order_number,))
         order = cur.fetchone()
         if not order:
             cur.close()
             conn.close()
             return jsonify({'error': 'Order not found'}), 404
-        if order['tracking_status'] != 'pending':
+        if order['status'] != 'pending':
             cur.close()
             conn.close()
             return jsonify({'error': 'Order already accepted'}), 400
@@ -81,9 +81,9 @@ def accept_order():
         # Accept the order
         cur.execute('''
             UPDATE orders
-            SET tracking_status = 'confirmed', dasher_email = %s, dasher_name = %s,
+            SET status = 'confirmed', dasher_email = %s, dasher_name = %s,
                 dasher_phone = %s, accepted_at = CURRENT_TIMESTAMP
-            WHERE id = %s AND tracking_status = 'pending'
+            WHERE id = %s AND status = 'pending'
         ''', (dasher_email, dasher['name'], dasher['phone'], order['id']))
         conn.commit()
 
@@ -137,7 +137,7 @@ def update_order_status():
 
         # Verify order exists and belongs to dasher
         cur.execute('''
-            SELECT id, customer_name, customer_email, tracking_status
+            SELECT id, customer_name, customer_email, status
             FROM orders
             WHERE order_number = %s AND dasher_email = %s
         ''', (order_number, dasher_email))
@@ -150,7 +150,7 @@ def update_order_status():
         # Update status
         cur.execute('''
             UPDATE orders
-            SET tracking_status = %s, updated_at = CURRENT_TIMESTAMP
+            SET status = %s, updated_at = CURRENT_TIMESTAMP
             WHERE id = %s
         ''', (new_status, order['id']))
         conn.commit()

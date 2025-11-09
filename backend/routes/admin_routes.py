@@ -61,7 +61,7 @@ def add_dasher():
 @admin_bp.route('/orders', methods=['GET'])
 def get_all_orders():
     """Get all orders (admin view)"""
-    status = request.args.get('tracking_status')
+    status = request.args.get('status')
     conn = None
     cur = None
     try:
@@ -70,7 +70,7 @@ def get_all_orders():
         query = 'SELECT * FROM orders'
         params = []
         if status:
-            query += ' WHERE tracking_status = %s'
+            query += ' WHERE status = %s'
             params.append(status)
         query += ' ORDER BY created_at DESC'
         cur.execute(query, params)

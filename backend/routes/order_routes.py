@@ -35,15 +35,15 @@ def create_order():
             INSERT INTO orders (
                 order_number, customer_name, customer_email, customer_phone,
                 delivery_address, special_instructions, pickup_location,
-                total_amount, status
+                total_amount
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id, order_number, created_at
         ''', (
             order_number, data['customer_name'], data['customer_email'],
             data['customer_phone'], data['delivery_address'],
             data.get('special_instructions'), data['pickup_location'],
-            total_amount, 'pending'
+            total_amount
         ))
 
         order = cur.fetchone()

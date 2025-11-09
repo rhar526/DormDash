@@ -1,23 +1,33 @@
 """
-Run the scraper and save results to JSON file (no database required)
+Run the scraper, save results to JSON, clear today's menu, and upload them into local PostgreSQL.
 """
-import json
+
 import os
+import json
+import datetime
+import psycopg2
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 from scrapy_folder.spiders.dining_scraper import WorcesterMenuSpider
 
-# Disable the pipeline for testing
-settings = get_project_settings()
-settings.set('ITEM_PIPELINES', {})  # Disable all pipelines
+# ---------- DATABASE CONFIG ----------
+DB_CONFIG = {
+    "host": "localhost",
+    "dbname": "dormdasher",
+    "user": "postgres",
+    "password": "RDF_Dorm_Dash",
+    "port": 5432,
+}
 
-# Set output file
+# ---------- SCRAPY CONFIG ----------
 output_file = 'umass_menu.json'
 
-# Delete old file if it exists to avoid appending
+# Remove old file
 if os.path.exists(output_file):
     os.remove(output_file)
 
+settings = get_project_settings()
+settings.set('ITEM_PIPELINES', {})  # Disable pipelines
 settings.set('FEEDS', {
     output_file: {
         'format': 'json',
@@ -27,36 +37,127 @@ settings.set('FEEDS', {
     }
 })
 
-# Create a crawler process
+# ---------- RUN SCRAPER ----------
+print("🕷️ Starting scraper...")
 process = CrawlerProcess(settings)
-
-# Run the spider
-print(f"Starting scraper...")
-print(f"Output will be saved to: {output_file}")
 process.crawl(WorcesterMenuSpider)
 process.start()
-
 print(f"\n✅ Scraping complete! Data saved to {output_file}")
 
-# Load and display summary
+# ---------- LOAD JSON ----------
 with open(output_file, 'r', encoding='utf-8') as f:
     data = json.load(f)
-    
+
 print(f"\nTotal items scraped: {len(data)}")
 
-# Count by category
-categories = {}
+# ---------- CONNECT TO POSTGRES ----------
+print("🗄️ Connecting to local PostgreSQL...")
+conn = psycopg2.connect(
+    host=DB_CONFIG["host"],
+    dbname=DB_CONFIG["dbname"],
+    user=DB_CONFIG["user"],
+    password=DB_CONFIG["password"],
+    port=DB_CONFIG["port"]
+)
+
+cursor = conn.cursor()
+
+# ---------- HELPER FUNCTIONS ----------
+def get_hall_id(hall_name: str) -> int:
+    cursor.execute("SELECT id FROM dining_halls WHERE name = %s", (hall_name,))
+    result = cursor.fetchone()
+    if result is not None:
+        return result[0]  # safe because result is a tuple
+    # Hall doesn't exist — insert it
+    cursor.execute("INSERT INTO dining_halls(name) VALUES(%s) RETURNING id", (hall_name,))
+    conn.commit()
+    new_result = cursor.fetchone()
+    if new_result is not None:
+        return new_result[0]
+    else:
+        raise RuntimeError(f"Failed to insert hall: {hall_name}")
+
+
+def clear_today_menu():
+    today = datetime.date.today()
+    cursor.execute("DELETE FROM menu_items WHERE id IN (SELECT id FROM menu_items) RETURNING id;")
+    conn.commit()
+    print("🗑️ Cleared old menu items for today.")
+
+def insert_menu_item(item):
+    hall_name = item.get('location') or item.get('hall') or "Unknown"
+    hall_id = get_hall_id(hall_name)
+
+    cursor.execute("""
+        INSERT INTO menu_items (name, calories, tags, hall)
+        VALUES (%s, %s, %s, %s)
+        ON CONFLICT DO NOTHING
+    """, (
+        item.get('name'),
+        item.get('calories'),
+        item.get('tags', []),
+        hall_name
+    ))
+    conn.commit()
+
+# ---------- CLEAR OLD DATA ----------
+clear_today_menu()
+
+# ---------- INSERT DATA ----------
+print("\n🍽️ Uploading scraped items to database...")
+inserted = 0
+skipped = 0
+
 for item in data:
-    cat = item['category']
+    # Use 'item_name' from your data
+    name = item.get('item_name')
+    if not name or name.strip() == "":
+        print(f"⚠️ Skipping item with missing name: {item}")
+        skipped += 1
+        continue
+
+    # Normalize tags: pick whichever exists
+    tags = item.get('tags') or item.get('tagss') or item.get('ttags') or []
+    tags = [t.strip() for t in tags if t and t.lower() != 'none']
+
+    # Prepare item dict for insertion
+    clean_item = {
+        'name': name.strip(),
+        'category': item.get('category', 'Uncategorized'),
+        'location': item.get('location', 'Unknown'),
+        'tags': tags
+    }
+
+    try:
+        insert_menu_item(clean_item)
+        inserted += 1
+    except Exception as e:
+        print(f"⚠️ Error inserting {name}: {e}")
+        conn.rollback()
+
+print(f"✅ Successfully uploaded {inserted} items to local PostgreSQL.")
+print(f"⚠️ Skipped {skipped} items due to missing names.")
+
+# ---------- DISPLAY SUMMARY ----------
+categories = {}
+all_tags = set()
+
+for item in data:
+    cat = item.get('category', 'Uncategorized')
     categories[cat] = categories.get(cat, 0) + 1
 
-print(f"\nItems by category:")
+    # Clean tags for summary
+    tags = item.get('tags') or item.get('tagss') or item.get('ttags') or []
+    tags = [t.strip() for t in tags if t and t.lower() != 'none']
+    all_tags.update(tags)
+
+print("\n📊 Items by category:")
 for cat, count in sorted(categories.items()):
     print(f"  {cat}: {count}")
 
-# Show unique tags
-all_tags = set()
-for item in data:
-    all_tags.update(item['tags'])
+print(f"\n🏷️ Unique dietary tags found: {sorted(all_tags)}")
 
-print(f"\nUnique dietary tags found: {sorted(all_tags)}")
+# ---------- CLEANUP ----------
+cursor.close()
+conn.close()
+print("\n🚀 Done!")

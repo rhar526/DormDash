@@ -15,11 +15,11 @@ ITEM_PIPELINES = {
 
 # --- PostgreSQL Database Settings (MUST UPDATE) ---
 # Replace these with your actual database credentials
-POSTGRES_HOST = 'your_db_host'
-POSTGRES_DB = 'your_database_name'
-POSTGRES_USER = 'your_db_user'
-POSTGRES_PASSWORD = 'your_db_password'
+POSTGRES_HOST = 'localhost'
+POSTGRES_DB = 'dormdasher'
+POSTGRES_USER = 'postgres'
+POSTGRES_PASSWORD = 'RDF_Dorm_Dasher'
 POSTGRES_PORT = 5432 # Default PostgreSQL port
 
 # Example User Agent (good practice)
-USER_AGENT = 'UMassDiningScraper (+http://www.yourwebsite.com)'
+USER_AGENT = 'UMassDiningScraper (+https://umassdining.com/locations-menus/worcester)'

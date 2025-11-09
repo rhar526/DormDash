@@ -1,18 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { CheckCircle, Package, Truck, Home } from 'lucide-react';
+import { CheckCircle, Package, Truck, Home, Clock } from 'lucide-react';
 
 const OrderConfirmation = () => {
   const { orderNumber } = useParams();
   const navigate = useNavigate();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [timeRemaining, setTimeRemaining] = useState(null);
+  const [estimatedArrival, setEstimatedArrival] = useState(null);
 
   useEffect(() => {
     if (orderNumber) {
       fetchOrderDetails();
     }
   }, [orderNumber]);
+
+  // Initialize countdown timer when order is loaded
+  useEffect(() => {
+    if (order) {
+      // Calculate estimated delivery time (25-35 minutes from order placement)
+      const orderTime = new Date(order.order_time || Date.now());
+      const estimatedMinutes = Math.floor(Math.random() * 11) + 25; // Random between 25-35 minutes
+      const arrivalTime = new Date(orderTime.getTime() + estimatedMinutes * 60000);
+      setEstimatedArrival(arrivalTime);
+    }
+  }, [order]);
+
+  // Countdown timer effect
+  useEffect(() => {
+    if (!estimatedArrival) return;
+
+    const updateCountdown = () => {
+      const now = new Date();
+      const diff = estimatedArrival - now;
+
+      if (diff <= 0) {
+        setTimeRemaining({ minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const minutes = Math.floor(diff / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      setTimeRemaining({ minutes, seconds });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval);
+  }, [estimatedArrival]);
 
   const fetchOrderDetails = async () => {
     try {
@@ -114,6 +151,33 @@ const OrderConfirmation = () => {
             <span className="font-mono font-semibold">{order.order_number}</span>
           </div>
         </div>
+
+        {/* Estimated Arrival Time */}
+        {timeRemaining && order.tracking_status !== 'delivered' && (
+          <div className="bg-gradient-to-r from-dormdash-red to-red-700 rounded-lg shadow-md p-6 mb-6 text-white">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Clock className="w-8 h-8 mr-3" />
+                <div>
+                  <p className="text-sm opacity-90">Estimated Arrival</p>
+                  <p className="text-2xl font-bold">
+                    {timeRemaining.minutes}:{timeRemaining.seconds.toString().padStart(2, '0')}
+                  </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm opacity-90">Expected at</p>
+                <p className="font-semibold">
+                  {estimatedArrival?.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit',
+                    hour12: true 
+                  })}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Order Status */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">

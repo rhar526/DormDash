@@ -1,7 +1,3 @@
-"""
-Run the scraper, save results to JSON, clear today's menu, and upload them into local PostgreSQL.
-"""
-
 import os
 import json
 import datetime
@@ -13,7 +9,7 @@ from scrapy_folder.spiders.dining_scraper import WorcesterMenuSpider
 # ---------- DATABASE CONFIG ----------
 DB_CONFIG = {
     "host": "localhost",
-    "dbname": "dormdasher",
+    "dbname": "dormdasherv2",
     "user": "postgres",
     "password": "RDF_Dorm_Dash",
     "port": 5432,
@@ -59,46 +55,53 @@ conn = psycopg2.connect(
     password=DB_CONFIG["password"],
     port=DB_CONFIG["port"]
 )
-
 cursor = conn.cursor()
 
 # ---------- HELPER FUNCTIONS ----------
-def get_hall_id(hall_name: str) -> int:
+def get_hall_id(hall_name: str):
     cursor.execute("SELECT id FROM dining_halls WHERE name = %s", (hall_name,))
     result = cursor.fetchone()
-    if result is not None:
-        return result[0]  # safe because result is a tuple
-    # Hall doesn't exist — insert it
+    if result:
+        return result[0]
+    # Insert new hall if it doesn't exist
     cursor.execute("INSERT INTO dining_halls(name) VALUES(%s) RETURNING id", (hall_name,))
     conn.commit()
     new_result = cursor.fetchone()
-    if new_result is not None:
+    if new_result:
         return new_result[0]
-    else:
-        raise RuntimeError(f"Failed to insert hall: {hall_name}")
+    raise RuntimeError(f"Failed to insert hall: {hall_name}")
 
 
 def clear_today_menu():
-    today = datetime.date.today()
-    cursor.execute("DELETE FROM menu_items WHERE id IN (SELECT id FROM menu_items) RETURNING id;")
+    cursor.execute("DELETE FROM menu_items")
     conn.commit()
-    print("🗑️ Cleared old menu items for today.")
+    print("🗑️ Cleared old menu items.")
+
 
 def insert_menu_item(item):
     hall_name = item.get('location') or item.get('hall') or "Unknown"
-    hall_id = get_hall_id(hall_name)
+    # Prepare arrays for Postgres
+    tags = item.get('tags') or []
+    tags = [t.strip() for t in tags if t and t.lower() != 'none']
+
+    dietary_info = item.get('dietary_info') or item.get('dietary') or []
+    dietary_info = [d.strip() for d in dietary_info if d and d.lower() != 'none']
 
     cursor.execute("""
-        INSERT INTO menu_items (name, calories, tags, hall)
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO menu_items (item_name, calories, tags, dietary_info, category, location, hall)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT DO NOTHING
     """, (
-        item.get('name'),
+        item.get('item_name') or item.get('name'),
         item.get('calories'),
-        item.get('tags', []),
+        tags if tags else None,
+        dietary_info if dietary_info else None,
+        item.get('category', 'Uncategorized'),
+        item.get('location', 'Unknown'),
         hall_name
     ))
     conn.commit()
+
 
 # ---------- CLEAR OLD DATA ----------
 clear_today_menu()
@@ -109,33 +112,19 @@ inserted = 0
 skipped = 0
 
 for item in data:
-    # Use 'item_name' from your data
-    name = item.get('item_name')
+    name = item.get('item_name') or item.get('name')
     if not name or name.strip() == "":
         print(f"⚠️ Skipping item with missing name: {item}")
         skipped += 1
         continue
-
-    # Normalize tags: pick whichever exists
-    tags = item.get('tags') or item.get('tagss') or item.get('ttags') or []
-    tags = [t.strip() for t in tags if t and t.lower() != 'none']
-
-    # Prepare item dict for insertion
-    clean_item = {
-        'name': name.strip(),
-        'category': item.get('category', 'Uncategorized'),
-        'location': item.get('location', 'Unknown'),
-        'tags': tags
-    }
-
     try:
-        insert_menu_item(clean_item)
+        insert_menu_item(item)
         inserted += 1
     except Exception as e:
         print(f"⚠️ Error inserting {name}: {e}")
         conn.rollback()
 
-print(f"✅ Successfully uploaded {inserted} items to local PostgreSQL.")
+print(f"✅ Successfully uploaded {inserted} items.")
 print(f"⚠️ Skipped {skipped} items due to missing names.")
 
 # ---------- DISPLAY SUMMARY ----------
@@ -146,8 +135,7 @@ for item in data:
     cat = item.get('category', 'Uncategorized')
     categories[cat] = categories.get(cat, 0) + 1
 
-    # Clean tags for summary
-    tags = item.get('tags') or item.get('tagss') or item.get('ttags') or []
+    tags = item.get('tags') or []
     tags = [t.strip() for t in tags if t and t.lower() != 'none']
     all_tags.update(tags)
 

@@ -27,10 +27,10 @@ CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "http://lo
 # Database connection
 def get_db_connection():
     conn = psycopg2.connect(
-        host=os.getenv('DB_HOST', 'localhost'),
-        database=os.getenv('DB_NAME', 'umass_dining'),
-        user=os.getenv('DB_USER', 'postgres'),
-        password=os.getenv('DB_PASSWORD', 'postgres'),
+        host=os.getenv('DB_HOST'),
+        database=os.getenv('DB_NAME'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
         cursor_factory=RealDictCursor
     )
     return conn

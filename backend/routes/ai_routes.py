@@ -2,6 +2,9 @@ from flask import Blueprint, request, jsonify
 import google.generativeai as genai
 import os
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 ai_bp = Blueprint('ai', __name__)
 
@@ -58,7 +61,7 @@ def chat():
             return jsonify({'error': 'Gemini API key not configured'}), 500
         
         # Create the model
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         # Prepare the prompt with menu data and user query
         prompt = f"""{SYSTEM_PROMPT}

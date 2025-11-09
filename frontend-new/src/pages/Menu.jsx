@@ -15,9 +15,8 @@ const Menu = () => {
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
 
   const dietaryTags = [
-    'Vegetarian', 'Vegan', 'Gluten-Free', 'Halal', 
-    'American', 'Italian', 'Asian', 'Mexican', 
-    'Healthy', 'Comfort Food'
+    'Vegetarian', 'Plant Based', 'Halal', 'Whole Grain',
+    'Local', 'Sustainable', 'Antibiotic Free'
   ];
 
   useEffect(() => {
@@ -63,7 +62,7 @@ const Menu = () => {
   const filteredItems = menuItems.filter(item => {
     if (selectedTags.length === 0) return true;
     
-    const itemTags = item.dietary_info || [];
+    const itemTags = item.tags || [];
     return selectedTags.some(tag => 
       itemTags.some(dietTag => 
         dietTag.toLowerCase().includes(tag.toLowerCase()) ||
@@ -192,9 +191,9 @@ const Menu = () => {
                   <p className="text-gray-500 text-sm mb-3">{item.location}</p>
                   
                   {/* Dietary Tags */}
-                  {item.dietary_info && item.dietary_info.length > 0 && (
+                  {item.tags && item.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 mb-3">
-                      {item.dietary_info.slice(0, 3).map((tag, idx) => (
+                      {item.tags.slice(0, 3).map((tag, idx) => (
                         <span
                           key={idx}
                           className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded"

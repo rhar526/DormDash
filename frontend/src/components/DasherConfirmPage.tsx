@@ -34,32 +34,10 @@ export default function DasherConfirmPage() {
         // const data = await response.json();
         
         // Mock data for demo
-        await new Promise(resolve => setTimeout(resolve, 500));
-        const mockOrder: OrderDetails = {
-          orderId: orderId || 'ORD-12345',
-          items: [
-            {
-              id: '1',
-              name: 'Classic Cheeseburger',
-              diningHall: 'Worcester'
-            },
-            {
-              id: '2',
-              name: 'Margherita Pizza',
-              diningHall: 'Hampshire'
-            }
-          ],
-          location: 'Southwest Tower 401',
-          phoneNumber: '(555) 123-4567',
-          customerName: 'John Student',
-          timestamp: new Date().toISOString()
-        };
-
-        setOrderDetails(mockOrder);
-        setIsLoading(false);
-      } catch (err) {
-        setError('Failed to load order details');
-        setIsLoading(false);
+        catch(error) {
+          setError('Failed to load order details');
+          setIsLoading(false);
+        }
       }
     };
 
@@ -85,6 +63,7 @@ export default function DasherConfirmPage() {
       // 2. Add customer to dasher's list
       // 3. Update order status in database
     } catch (err) {
+      console.error(err);
       setError('Failed to accept order. Please try again.');
     }
   };

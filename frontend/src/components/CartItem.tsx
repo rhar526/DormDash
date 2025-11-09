@@ -1,4 +1,4 @@
-import { FoodItem } from './CartContext';
+import type { FoodItem } from './CartContext';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { X, UtensilsCrossed } from 'lucide-react';

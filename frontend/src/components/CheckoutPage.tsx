@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -95,8 +95,8 @@ export default function CheckoutPage() {
             <Button
               onClick={() => navigate('/order')}
               style={{ backgroundColor: 'var(--umass-maroon)' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
+              onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
+              onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
             >
               Browse Menu
             </Button>
@@ -178,8 +178,8 @@ export default function CheckoutPage() {
                 type="submit"
                 className="w-full"
                 style={{ backgroundColor: 'var(--umass-maroon)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
+                onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
+                onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Placing Order...' : 'Place Order'}

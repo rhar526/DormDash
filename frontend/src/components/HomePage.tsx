@@ -18,8 +18,8 @@ export default function HomePage() {
             size="lg"
             className="text-xl px-8 py-6"
             style={{ backgroundColor: 'var(--umass-maroon)' }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
+            onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
+            onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
           >
             Start Your Order
           </Button>

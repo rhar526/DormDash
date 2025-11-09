@@ -1,9 +1,8 @@
-import { FoodItem } from './CartContext';
+import type { FoodItem } from './CartContext';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardFooter } from './ui/card';
 import { Plus, UtensilsCrossed } from 'lucide-react';
-
 interface FoodCardProps {
   item: FoodItem;
   onAdd: (item: FoodItem) => void;
@@ -34,8 +33,8 @@ export default function FoodCard({ item, onAdd }: FoodCardProps) {
           onClick={() => onAdd(item)}
           className="w-full"
           style={{ backgroundColor: 'var(--umass-maroon)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
+          onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
+          onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
         >
           <Plus className="w-4 h-4 mr-2" />
           Add to Order

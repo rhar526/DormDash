@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from './CartContext';
+import { useCart, type FoodItem } from './CartContext';
 import { MOCK_FOOD_ITEMS, FOOD_TAGS, DINING_HALLS } from './mockData';
 import FoodCard from './FoodCard';
 import { Button } from './ui/button';
@@ -28,7 +28,7 @@ export default function OrderPage() {
     );
   };
 
-  const filteredItems = MOCK_FOOD_ITEMS.filter(item => {
+  const filteredItems = MOCK_FOOD_ITEMS.filter((item: { tags: string | string[]; diningHall: string; }) => {
     const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => item.tags.includes(tag));
     const matchesDiningHall = selectedDiningHall === 'All' || item.diningHall === selectedDiningHall;
     return matchesTags && matchesDiningHall;
@@ -52,8 +52,8 @@ export default function OrderPage() {
               onClick={() => navigate('/checkout')}
               className="gap-2"
               style={{ backgroundColor: 'var(--umass-maroon)' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
+              onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon-dark)'}
+              onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string; }; }; }) => e.currentTarget.style.backgroundColor = 'var(--umass-maroon)'}
               disabled={cart.length === 0}
             >
               <ShoppingCart className="w-4 h-4" />
@@ -69,7 +69,7 @@ export default function OrderPage() {
                   <SelectValue placeholder="Select dining hall" />
                 </SelectTrigger>
                 <SelectContent>
-                  {DINING_HALLS.map(hall => (
+                  {DINING_HALLS.map((hall: any) => (
                     <SelectItem key={hall} value={hall}>
                       {hall}
                     </SelectItem>
@@ -81,7 +81,7 @@ export default function OrderPage() {
             <div>
               <label className="block mb-2">Filter by Tags</label>
               <div className="flex flex-wrap gap-2">
-                {FOOD_TAGS.map(tag => (
+                {FOOD_TAGS.map((tag: string) => (
                   <Badge
                     key={tag}
                     variant={selectedTags.includes(tag) ? 'default' : 'outline'}
@@ -109,7 +109,7 @@ export default function OrderPage() {
           Showing {filteredItems.length} items
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map(item => (
+          {filteredItems.map((item: FoodItem) => (
             <FoodCard
               key={item.id}
               item={item}

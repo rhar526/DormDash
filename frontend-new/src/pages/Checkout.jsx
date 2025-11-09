@@ -62,8 +62,16 @@ const Checkout = () => {
       const data = await response.json();
 
       if (response.ok) {
+        // Pass order data directly to confirmation page
+        const orderForConfirmation = {
+          ...orderData,
+          order_number: data.order_number,
+          order_id: data.order_id
+        };
         clearCart();
-        navigate(`/order-confirmation/${data.order_number}`);
+        navigate(`/order-confirmation/${data.order_number}`, { 
+          state: { order: orderForConfirmation } 
+        });
       } else {
         setError(data.error || 'Failed to place order');
       }

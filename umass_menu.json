@@ -1,0 +1,1219 @@
+[
+{
+  "item_name": "Chicken Congee",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Antibiotic Free"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chinese Twist Cruller",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "GENERAL MILLS Apple Turnover",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Hard Boiled Egg",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Hot Oatmeal",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Omelet Bar",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Red Potato Home Fries",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Rstd Tomato, Bean & Mushroom Breakfast",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Scrambled Eggs",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Sliced Kielbasa",
+  "category": "Breakfast Entrees",
+  "tags": [],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Southwest Tofu Scramble",
+  "category": "Breakfast Entrees",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Blueberry Blizzard Coffeecake (Pecans, Walnuts)",
+  "category": "Breakfast Pastries",
+  "tags": [
+    "Halal",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Mini Apple Danish",
+  "category": "Breakfast Pastries",
+  "tags": [
+    "Halal",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chicken Noodle Soup",
+  "category": "Soups",
+  "tags": [
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Baked Herbs de Provence Chicken",
+  "category": "Grill Station",
+  "tags": [
+    "Antibiotic Free",
+    "Halal"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Black Bean Burger",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Halal Burger Patty",
+  "category": "Grill Station",
+  "tags": [
+    "Halal"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Halal French Fries",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Hand Cut Sweet Potato Fries",
+  "category": "Grill Station",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Roasted Butternut Squash",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Halal\r5"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Roasted Zucchini",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Farro, Tomato, & Chickpea Salad",
+  "category": "Salad Bar/Dressings",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pickled Winter Moon Root Vetegables",
+  "category": "Salad Bar/Dressings",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Zebra Brownies",
+  "category": "Desserts",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chicken Shoyu Ramen Bar (Fish, Shellfish)",
+  "category": "Noodle Bowl",
+  "tags": [
+    "Antibiotic Free"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Hard Boiled Egg",
+  "category": "Noodle Bowl",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Cheese Pizza",
+  "category": "Pizza",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pepperoni Pizza",
+  "category": "Pizza",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Jasmine Rice",
+  "category": "Street Food",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Mei Fun Noodles",
+  "category": "Street Food",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Salt & Pepper Pulmuone Tofu",
+  "category": "Street Food",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Stir Fry Green Vegetables",
+  "category": "Street Food",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Szechuan Pork Belly w/Cabbage & Caul",
+  "category": "Street Food",
+  "tags": [
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Cumin Basmati Rice",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Naan",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pulmuone Tofu Tikka Masala",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Vegetable Korma Rasoi",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Vegetable Sambar",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Manicotti",
+  "category": "Mediterranean",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Marinara Sauce",
+  "category": "Mediterranean",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Meatball Sauce",
+  "category": "Mediterranean",
+  "tags": [
+    "None"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Orecchiette Pasta",
+  "category": "Mediterranean",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Whole Grain Penne",
+  "category": "Mediterranean",
+  "tags": [
+    "Halal",
+    "Vegetarian",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "BUSH's Baked Beans",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Corn, Tomato & Scallion Salad",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "GF Penne Pasta",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Grape Tomatoes",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Honey Mustard Vinaigrette",
+  "category": "Seasons",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Marinara Sauce",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pumpkin Seeds/Pepitas",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Red & Yellow Pepper Salad",
+  "category": "Seasons",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Rice Pilaf",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Spring Mix",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Sunflower Seeds",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tear Drop Peppers",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chilaquiles Verdes",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Vegetarian",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Omelet Bar",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chicken Noodle Soup",
+  "category": "Soups",
+  "tags": [
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Baked Herbs de Provence Chicken",
+  "category": "Grill Station",
+  "tags": [
+    "Antibiotic Free",
+    "Halal"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Black Bean Burger",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Halal Burger Patty",
+  "category": "Grill Station",
+  "tags": [
+    "Halal"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Halal French Fries",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Hand Cut Sweet Potato Fries",
+  "category": "Grill Station",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Local Roasted Sweet Potatoes",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Roasted Cauliflower & Broccoli",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Farro, Tomato, & Chickpea Salad",
+  "category": "Salad Bar/Dressings",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pickled Winter Moon Root Vetegables",
+  "category": "Salad Bar/Dressings",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tiramisu Cake (Gelatin)",
+  "category": "Desserts",
+  "tags": [
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Vanilla Cake w/Choc Icing",
+  "category": "Desserts",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Anadama Bread",
+  "category": "Breads",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tantanmen Ramen Bar",
+  "category": "Noodle Bowl",
+  "tags": [
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Cheese Pizza",
+  "category": "Pizza",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pepperoni Pizza",
+  "category": "Pizza",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Braised Pulmuone Tofu",
+  "category": "Street Food",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chicken & Vegetable Stir Fry",
+  "category": "Street Food",
+  "tags": [
+    "Antibiotic Free",
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Jasmine Rice",
+  "category": "Street Food",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Stir Fry Green Vegetables",
+  "category": "Street Food",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Vegetable Lo Mein",
+  "category": "Street Food",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chickpea Salad w/Tomatoes & Feta",
+  "category": "Tandoor",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Garlic Parmesan Roasted Creamer Potatoes",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Greek Tomato Salad",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Herbed Roasted Chicken",
+  "category": "Tandoor",
+  "tags": [
+    "Antibiotic Free",
+    "Halal",
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Lemon Rice Pilaf",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Marinated Artichokes",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tear Drop Peppers",
+  "category": "Tandoor",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Manicotti",
+  "category": "Mediterranean",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Marinara Sauce",
+  "category": "Mediterranean",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Meatball Sauce",
+  "category": "Mediterranean",
+  "tags": [
+    "None"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Orecchiette Pasta",
+  "category": "Mediterranean",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Whole Grain Penne",
+  "category": "Mediterranean",
+  "tags": [
+    "Halal",
+    "Vegetarian",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Corn, Tomato & Scallion Salad",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "GF Penne Pasta",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Grape Tomatoes",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Greek Lentils",
+  "category": "Seasons",
+  "tags": [
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Honey Mustard Vinaigrette",
+  "category": "Seasons",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Lemon Quinoa w/Craisins & Thyme",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Marinara Sauce",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Moraccan Green Garbanzo Bean Salad",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pumpkin Seeds/Pepitas",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Rstd Mediterranean Cauliflower",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Sautéed Kale",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Halal\r7"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Spring Mix",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Sunflower Seeds",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tear Drop Peppers",
+  "category": "Seasons",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Ancho Lime Pulled Chicken",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Antibiotic Free",
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Black Beans",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Filling for Beef Tacos",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Local",
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Latin Toppings",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Plant Based Chorizo Crumbles",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Queso Sauce",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Spicy Mango Salad",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tri Color Tortilla Chips",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Warm Charred Corn Salsa",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Yellow Rice",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Baked Herbs de Provence Chicken",
+  "category": "Grill Station",
+  "tags": [
+    "Antibiotic Free",
+    "Halal"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Black Bean Burger",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Halal Burger Patty",
+  "category": "Grill Station",
+  "tags": [
+    "Halal"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Halal French Fries",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Roasted Zucchini",
+  "category": "Grill Station",
+  "tags": [
+    "Halal",
+    "Plant Based"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Cheese Pizza",
+  "category": "Pizza",
+  "tags": [
+    "Halal",
+    "Local",
+    "Sustainable",
+    "Vegetarian",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Pepperoni Pizza",
+  "category": "Pizza",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Whole Grain"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tortellini w/Red Pepper Pesto & Artichoke",
+  "category": "Pizza",
+  "tags": [
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Chicken Noodle Soup",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Sustainable"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Grilled Cheese Sandwich",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Local",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "Tomato Basil Soup",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "Halal",
+    "Sustainable",
+    "Vegetarian"
+  ],
+  "location": "Worcester Dining Commons"
+},
+{
+  "item_name": "VIOLIFE Grilled Cheese Sandwich",
+  "category": "Latino 1  WOR",
+  "tags": [
+    "None"
+  ],
+  "location": "Worcester Dining Commons"
+}
+]

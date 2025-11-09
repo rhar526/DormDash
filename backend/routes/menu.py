@@ -1,61 +1,65 @@
 from flask import Blueprint, jsonify, request
-from models import MenuItem
+from models import MenuOption
 from app import db
 
 menu_bp = Blueprint('menu', __name__)
 
+
 @menu_bp.route('/', methods=['GET'])
 def get_menu():
-    """Get all menu items"""
-    items = MenuItem.query.all()
-    return jsonify([item.to_dict() for item in items])
-
-@menu_bp.route('/<int:item_id>', methods=['GET'])
-def get_menu_item(item_id):
-    """Get a specific menu item"""
-    item = MenuItem.query.get_or_404(item_id)
-    return jsonify(item.to_dict())
-
-@menu_bp.route('/', methods=['POST'])
-def create_menu_item():
-    """Create a new menu item"""
-    data = request.get_json()
-    item = MenuItem(
-        name=data['name'],
-        description=data.get('description'),
-        price=data['price'],
-        category=data.get('category'),
-        available=data.get('available', True)
-    )
-    db.session.add(item)
-    db.session.commit()
-    return jsonify(item.to_dict()), 201
-
-@menu_bp.route('/<int:item_id>', methods=['PUT'])
-def update_menu_item(item_id):
-    """Update a menu item"""
-    item = MenuItem.query.get_or_404(item_id)
-    data = request.get_json()
+    """
+    Fetch menu options with optional filters
     
-    if 'name' in data:
-        item.name = data['name']
-    if 'description' in data:
-        item.description = data['description']
-    if 'price' in data:
-        item.price = data['price']
-    if 'category' in data:
-        item.category = data['category']
-    if 'available' in data:
-        item.available = data['available']
+    Query parameters:
+    - hall_id (optional): filter by dining hall
+    - meal_type (optional): filter by meal type
     
-    db.session.commit()
-    return jsonify(item.to_dict())
+    Returns JSON array of menu items where available_today = true
+    """
+    try:
+        # Start with base query filtering available items
+        query = MenuOption.query.filter(MenuOption.available_today == True)
+        
+        # Get query parameters
+        hall_id = request.args.get('hall_id')
+        meal_type = request.args.get('meal_type')
+        
+        # Apply filters if provided
+        if hall_id:
+            query = query.filter(MenuOption.hall_id == hall_id)
+        
+        if meal_type:
+            query = query.filter(MenuOption.meal_type == meal_type)
+        
+        # Execute query and convert to dict
+        menu_items = query.all()
+        result = [item.to_dict() for item in menu_items]
+        
+        return jsonify(result), 200
+    
+    except Exception as e:
+        return jsonify({'error': f'Failed to fetch menu: {str(e)}'}), 500
 
-@menu_bp.route('/<int:item_id>', methods=['DELETE'])
-def delete_menu_item(item_id):
-    """Delete a menu item"""
-    item = MenuItem.query.get_or_404(item_id)
-    db.session.delete(item)
-    db.session.commit()
-    return '', 204
 
+@menu_bp.route('/scrape', methods=['POST'])
+def scrape_menu():
+    """
+    Trigger Nutrislice API scrape (admin only)
+    
+    Calls nutrislice_scraper() function from services/nutrislice.py
+    """
+    try:
+        from services.nutrislice import nutrislice_scraper
+        
+        # Call the scraper function
+        result = nutrislice_scraper()
+        
+        return jsonify({
+            'message': 'Menu scrape initiated successfully',
+            'result': result
+        }), 200
+    
+    except ImportError as e:
+        return jsonify({'error': f'Scraper function not found: {str(e)}'}), 500
+    except Exception as e:
+        return jsonify({'error': f'Failed to scrape menu: {str(e)}'}), 500

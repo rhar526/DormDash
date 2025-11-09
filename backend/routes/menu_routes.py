@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from utils.database import get_db_connection
+import psycopg2.extras
 
 menu_bp = Blueprint('menu', __name__)
 
@@ -10,7 +11,7 @@ def get_menu():
     
     try:
         conn = get_db_connection()
-        cur = conn.cursor()
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         
         query = 'SELECT * FROM menu_items WHERE available = true'
         params = []
@@ -23,10 +24,11 @@ def get_menu():
         
         cur.execute(query, params)
         menu_items = cur.fetchall()
+        
         cur.close()
         conn.close()
         
-        return jsonify({'menu_items': [dict(item) for item in menu_items]}), 200
+        return jsonify({'menu_items': menu_items}), 200
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -36,10 +38,11 @@ def get_locations():
     """Get all unique dining hall locations"""
     try:
         conn = get_db_connection()
-        cur = conn.cursor()
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         
         cur.execute('SELECT DISTINCT location FROM menu_items ORDER BY location')
         locations = cur.fetchall()
+        
         cur.close()
         conn.close()
         
@@ -50,12 +53,12 @@ def get_locations():
 
 @menu_bp.route('/categories', methods=['GET'])
 def get_categories():
-    """Get all unique menu categories"""
+    """Get all unique menu categories, optionally filtered by location"""
     location = request.args.get('location')
     
     try:
         conn = get_db_connection()
-        cur = conn.cursor()
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         
         query = 'SELECT DISTINCT category FROM menu_items'
         params = []
@@ -68,6 +71,7 @@ def get_categories():
         
         cur.execute(query, params)
         categories = cur.fetchall()
+        
         cur.close()
         conn.close()
         

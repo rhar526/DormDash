@@ -100,7 +100,7 @@ export default function DasherConfirmPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <Card className="max-w-md">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2" style={{ color: "var(--umass-maroon)" }}>
+            <CardTitle className="flex items-center gap-2 text-umass-maroon">
               <AlertCircle className="w-5 h-5" />
               Error
             </CardTitle>
@@ -120,9 +120,7 @@ export default function DasherConfirmPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl mb-2" style={{ color: "var(--umass-maroon)" }}>
-            Dasher Portal
-          </h1>
+          <h1 className="text-3xl mb-2 text-umass-maroon">Dasher Portal</h1>
           <p className="text-gray-600">Order #{orderDetails.order_number}</p>
         </div>
 
@@ -196,11 +194,8 @@ export default function DasherConfirmPage() {
                 <div className="space-y-3">
                   {orderDetails.items.map((item, index) => (
                     <div key={index} className="flex gap-3 items-start p-3 bg-gray-50 rounded-lg">
-                      <div
-                        className="w-16 h-16 flex-shrink-0 rounded overflow-hidden flex items-center justify-center"
-                        style={{ backgroundColor: "#fde8e8" }}
-                      >
-                        <UtensilsCrossed className="w-8 h-8" style={{ color: "var(--umass-maroon)" }} />
+                      <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden flex items-center justify-center bg-[#fde8e8]">
+                        <UtensilsCrossed className="w-8 h-8 text-umass-maroon" />
                       </div>
                       <div className="flex-1">
                         <p className="font-semibold">{item.item_name}</p>

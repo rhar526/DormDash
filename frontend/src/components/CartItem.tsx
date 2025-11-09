@@ -13,16 +13,13 @@ interface CartItemProps {
 export default function CartItem({ item, onRemove }: CartItemProps) {
   return (
     <div className="flex gap-4 p-4 bg-white rounded-lg shadow-sm border">
-      <div
-        className="w-24 h-24 flex-shrink-0 rounded overflow-hidden flex items-center justify-center"
-        style={{ backgroundColor: "#fde8e8" }}
-      >
-        <UtensilsCrossed className="w-10 h-10" style={{ color: "var(--umass-maroon)" }} />
+      <div className="w-24 h-24 flex-shrink-0 rounded overflow-hidden flex items-center justify-center bg-[#fde8e8]">
+        <UtensilsCrossed className="w-10 h-10 text-umass-maroon" />
       </div>
       <div className="flex-1">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="mb-1">{item.item_name}</h3>
+            <h3 className="mb-1 font-semibold">{item.item_name}</h3>
             <p className="text-sm text-gray-600 mb-2">{item.location}</p>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-sm font-semibold">${item.price.toFixed(2)}</span>
@@ -41,8 +38,7 @@ export default function CartItem({ item, onRemove }: CartItemProps) {
             variant="ghost"
             size="sm"
             onClick={() => onRemove(item.cartItemId)}
-            className="hover:bg-red-100"
-            style={{ color: "var(--umass-maroon)" }}
+            className="hover:bg-red-100 text-umass-maroon"
           >
             <X className="w-4 h-4" />
           </Button>

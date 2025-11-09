@@ -1,5 +1,5 @@
 import type * as React from "react"
-import { Slot } from "@radix-ui/react-slot@latest"
+import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "./utils"

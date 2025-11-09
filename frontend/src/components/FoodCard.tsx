@@ -14,14 +14,11 @@ interface FoodCardProps {
 export default function FoodCard({ item, onAdd }: FoodCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <div
-        className="aspect-video overflow-hidden flex items-center justify-center"
-        style={{ backgroundColor: "#fde8e8" }}
-      >
-        <UtensilsCrossed className="w-16 h-16" style={{ color: "var(--umass-maroon)" }} />
+      <div className="aspect-video overflow-hidden flex items-center justify-center bg-[#fde8e8]">
+        <UtensilsCrossed className="w-16 h-16 text-umass-maroon" />
       </div>
       <CardContent className="p-4">
-        <h3 className="mb-2">{item.item_name}</h3>
+        <h3 className="mb-2 font-semibold">{item.item_name}</h3>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-sm text-gray-600 font-semibold">${item.price.toFixed(2)}</span>
           <span className="text-sm text-gray-500">{item.location}</span>
@@ -40,14 +37,7 @@ export default function FoodCard({ item, onAdd }: FoodCardProps) {
       <CardFooter className="p-4 pt-0">
         <Button
           onClick={() => onAdd(item)}
-          className="w-full"
-          style={{ backgroundColor: "var(--umass-maroon)" }}
-          onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-            (e.currentTarget.style.backgroundColor = "var(--umass-maroon-dark)")
-          }
-          onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-            (e.currentTarget.style.backgroundColor = "var(--umass-maroon)")
-          }
+          className="w-full bg-umass-maroon hover:bg-umass-maroon-dark"
           disabled={!item.available}
         >
           <Plus className="w-4 h-4 mr-2" />

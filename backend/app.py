@@ -20,7 +20,9 @@ from routes.admin_routes import admin_bp
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+# Allow CORS only for the frontend dev server origin on API routes
+# Allow the Vite dev server origin and localhost:8080 (in case frontend or tools use that)
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "http://localhost:8080"]}})
 
 # Database connection
 def get_db_connection():
@@ -82,4 +84,4 @@ def health_check():
     return jsonify({'status': 'healthy', 'message': 'UMass Dining Delivery API is running'})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=8080)

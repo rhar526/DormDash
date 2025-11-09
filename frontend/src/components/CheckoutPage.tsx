@@ -94,18 +94,9 @@ export default function CheckoutPage() {
           </Button>
           <div className="text-center py-16">
             <ShoppingBag className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-            <h2 className="mb-2">Your cart is empty</h2>
+            <h2 className="mb-2 font-semibold">Your cart is empty</h2>
             <p className="text-gray-600 mb-4">Add some items to get started</p>
-            <Button
-              onClick={() => navigate("/order")}
-              style={{ backgroundColor: "var(--umass-maroon)" }}
-              onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-                (e.currentTarget.style.backgroundColor = "var(--umass-maroon-dark)")
-              }
-              onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-                (e.currentTarget.style.backgroundColor = "var(--umass-maroon)")
-              }
-            >
+            <Button onClick={() => navigate("/order")} className="bg-umass-maroon hover:bg-umass-maroon-dark">
               Browse Menu
             </Button>
           </div>
@@ -124,15 +115,13 @@ export default function CheckoutPage() {
             <ArrowLeft className="w-4 h-4" />
             Back to Order
           </Button>
-          <h1 className="text-3xl" style={{ color: "var(--umass-maroon)" }}>
-            Checkout
-          </h1>
+          <h1 className="text-3xl text-umass-maroon">Checkout</h1>
           <div className="w-24"></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h2 className="mb-4">Your Order</h2>
+            <h2 className="mb-4 font-semibold">Your Order</h2>
             <div className="space-y-3">
               {cart.map((item) => (
                 <CartItem key={item.cartItemId} item={item} onRemove={removeFromCart} />
@@ -145,7 +134,7 @@ export default function CheckoutPage() {
           </div>
 
           <div>
-            <h2 className="mb-4">Delivery Information</h2>
+            <h2 className="mb-4 font-semibold">Delivery Information</h2>
             <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-sm border">
               <div>
                 <Label htmlFor="name">Full Name</Label>
@@ -231,14 +220,7 @@ export default function CheckoutPage() {
 
               <Button
                 type="submit"
-                className="w-full"
-                style={{ backgroundColor: "var(--umass-maroon)" }}
-                onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-                  (e.currentTarget.style.backgroundColor = "var(--umass-maroon-dark)")
-                }
-                onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-                  (e.currentTarget.style.backgroundColor = "var(--umass-maroon)")
-                }
+                className="w-full bg-umass-maroon hover:bg-umass-maroon-dark"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useEffect, useState } from "react"
@@ -73,7 +72,7 @@ export default function OrderStatusPage() {
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           <div className="text-center">
             <p className="text-red-600 mb-4">{error || "Order not found"}</p>
-            <Button onClick={() => navigate("/")} style={{ backgroundColor: "var(--umass-maroon)" }}>
+            <Button onClick={() => navigate("/")} className="bg-umass-maroon hover:bg-umass-maroon-dark">
               Back to Home
             </Button>
           </div>
@@ -90,9 +89,7 @@ export default function OrderStatusPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl mb-2" style={{ color: "var(--umass-maroon)" }}>
-            Order Status
-          </h1>
+          <h1 className="text-3xl mb-2 text-umass-maroon">Order Status</h1>
           <p className="text-gray-600">Order #{orderData.order_number}</p>
         </div>
 
@@ -174,20 +171,17 @@ export default function OrderStatusPage() {
         </div>
 
         <div className="mb-8">
-          <h2 className="mb-4">Your Order Items</h2>
+          <h2 className="mb-4 font-semibold">Your Order Items</h2>
           <div className="bg-white rounded-lg shadow-sm border p-4">
             <div className="space-y-3">
               {orderData.items &&
                 orderData.items.map((item: any, index: number) => (
                   <div key={index} className="flex gap-3 items-start">
-                    <div
-                      className="w-16 h-16 flex-shrink-0 rounded overflow-hidden flex items-center justify-center"
-                      style={{ backgroundColor: "#fde8e8" }}
-                    >
-                      <UtensilsCrossed className="w-8 h-8" style={{ color: "var(--umass-maroon)" }} />
+                    <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden flex items-center justify-center bg-[#fde8e8]">
+                      <UtensilsCrossed className="w-8 h-8 text-umass-maroon" />
                     </div>
                     <div className="flex-1">
-                      <p>{item.item_name || item.name}</p>
+                      <p className="font-semibold">{item.item_name || item.name}</p>
                       <p className="text-sm text-gray-500">{item.category}</p>
                       <p className="text-sm font-semibold">${item.price.toFixed(2)}</p>
                     </div>
@@ -202,13 +196,7 @@ export default function OrderStatusPage() {
 
         <div className="flex gap-4">
           {isDelivered && (
-            <Button
-              onClick={handleNewOrder}
-              className="flex-1"
-              style={{ backgroundColor: "var(--umass-maroon)" }}
-              onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string } } }) => (e.currentTarget.style.backgroundColor = "var(--umass-maroon-dark)")}
-              onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string } } }) => (e.currentTarget.style.backgroundColor = "var(--umass-maroon)")}
-            >
+            <Button onClick={handleNewOrder} className="flex-1 bg-umass-maroon hover:bg-umass-maroon-dark">
               Place New Order
             </Button>
           )}

@@ -60,19 +60,10 @@ export default function OrderPage() {
               <ArrowLeft className="w-4 h-4" />
               Back to Home
             </Button>
-            <h1 className="text-3xl" style={{ color: "var(--umass-maroon)" }}>
-              DormDash
-            </h1>
+            <h1 className="text-3xl text-umass-maroon">DormDash</h1>
             <Button
               onClick={() => navigate("/checkout")}
-              className="gap-2"
-              style={{ backgroundColor: "var(--umass-maroon)" }}
-              onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-                (e.currentTarget.style.backgroundColor = "var(--umass-maroon-dark)")
-              }
-              onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string } } }) =>
-                (e.currentTarget.style.backgroundColor = "var(--umass-maroon)")
-              }
+              className="gap-2 bg-umass-maroon hover:bg-umass-maroon-dark"
               disabled={cart.length === 0}
             >
               <ShoppingCart className="w-4 h-4" />
@@ -106,15 +97,9 @@ export default function OrderPage() {
                     <Badge
                       key={tag}
                       variant={selectedTags.includes(tag) ? "default" : "outline"}
-                      className="cursor-pointer"
-                      style={
-                        selectedTags.includes(tag)
-                          ? {
-                              backgroundColor: "var(--umass-maroon)",
-                              borderColor: "var(--umass-maroon)",
-                            }
-                          : {}
-                      }
+                      className={`cursor-pointer ${
+                        selectedTags.includes(tag) ? "bg-umass-maroon border-umass-maroon" : ""
+                      }`}
                       onClick={() => toggleTag(tag)}
                     >
                       {tag}

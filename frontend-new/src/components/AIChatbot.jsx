@@ -23,7 +23,7 @@ const AIChatbot = ({ menuItems, onFilterResults }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/ai/chat', {
+      const response = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,6 +33,15 @@ const AIChatbot = ({ menuItems, onFilterResults }) => {
           menu_data: menuItems
         })
       });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: `Error: ${errorData.error || 'Failed to connect to AI service'}`
+        }]);
+        return;
+      }
 
       const data = await response.json();
 

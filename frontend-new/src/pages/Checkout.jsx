@@ -45,7 +45,7 @@ const Checkout = () => {
           name: item.item_name,
           category: item.category,
           quantity: item.quantity || 1,
-          price: item.price || 5.0,
+          price: item.price || 2.0,
           special_instructions: ''
         })),
         total_amount: getTotalPrice()

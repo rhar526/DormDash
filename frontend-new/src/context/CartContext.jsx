@@ -59,7 +59,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((sum, item) => sum + (item.price || 5.0) * (item.quantity || 1), 0);
+    return cartItems.reduce((sum, item) => sum + (item.price || 2.0) * (item.quantity || 1), 0);
   };
 
   return (
